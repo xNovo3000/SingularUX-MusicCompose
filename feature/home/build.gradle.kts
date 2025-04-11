@@ -56,6 +56,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling.preview)
     // Compose - Material 3
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.material.icons)
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
