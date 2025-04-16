@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="search_bar_placeholder">Search in your music library</string>
+    <string name="search_bar_placeholder">Search your music library</string>
     <string name="search_bar_search">Search</string>
     <string name="search_bar_back">Back</string>
     <string name="search_bar_clear_all">Clear all</string>
+    <string name="section_collection_header">Collection</string>
+    <string name="section_collection_artists">Artists</string>
+    <string name="section_collection_albums">Albums</string>
+    <string name="section_collection_playlists">Playlists</string>
+    <string name="section_collection_recent">Recent</string>
+    <string name="section_collection_found">%d found</string>
+    <string name="section_collection_empty">Empty</string>
 </resources>

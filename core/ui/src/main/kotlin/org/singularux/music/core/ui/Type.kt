@@ -7,8 +7,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 
 private val musicFontFamily = FontFamily(
-    Font(resId = R.font.noto_sans_regular, weight = FontWeight.Medium),
-    Font(resId = R.font.noto_sans_regular_italic, weight = FontWeight.Medium, style = FontStyle.Italic),
+    Font(resId = R.font.noto_sans_regular, weight = FontWeight.Normal),
+    Font(resId = R.font.noto_sans_regular_italic, weight = FontWeight.Normal, style = FontStyle.Italic),
     Font(resId = R.font.noto_sans_medium, weight = FontWeight.Medium),
     Font(resId = R.font.noto_sans_medium_italic, weight = FontWeight.Medium, style = FontStyle.Italic),
 )
