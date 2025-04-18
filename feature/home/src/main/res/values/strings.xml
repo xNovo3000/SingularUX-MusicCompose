@@ -11,4 +11,12 @@
     <string name="section_collection_recent">Recent</string>
     <string name="section_collection_found">%d found</string>
     <string name="section_collection_empty">Empty</string>
+    <string name="section_tracks_header">Tracks</string>
+    <string name="section_tracks_header_sorting">Sort: %s</string>
+    <string name="section_tracks_header_sorting_desc">Sort</string>
+    <string name="sorting_strategy_az">A-Z</string>
+    <string name="sorting_strategy_decreasing_duration">Decreasing duration</string>
+    <string name="track_item_supporting">%1$d:%2$d &#183; %3$s</string>
+    <string name="track_item_more_vert">More</string>
+    <string name="track_item_add_to_queue">Add to queue</string>
 </resources>

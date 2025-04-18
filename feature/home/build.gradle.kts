@@ -45,6 +45,10 @@ android {
 dependencies {
     // Library
     api(project(":core:ui"))
+    // AndroidX
+    implementation(libs.androidx.core)
+    // Coil
+    implementation(libs.coil.compose)
     // Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.animation)

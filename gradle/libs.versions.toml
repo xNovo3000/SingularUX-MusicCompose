@@ -8,6 +8,7 @@ androidx-core-splashscreen = "1.0.1"
 androidx-activity = "1.10.1"
 androidx-navigation = "2.8.9"
 androidx-compose = "2025.04.00"
+coil = "3.1.0"
 kotlinx-serialization = "1.8.0"
 jdk-desugar = "2.1.5"
 
@@ -17,6 +18,8 @@ androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "and
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidx-core-splashscreen" }
 androidx-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
+# Coil
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
 # Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose" }
 androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }

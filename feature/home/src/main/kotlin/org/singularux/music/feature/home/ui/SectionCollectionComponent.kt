@@ -1,6 +1,7 @@
 package org.singularux.music.feature.home.ui
 
 import android.content.res.Configuration
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,7 +30,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import org.singularux.music.core.ui.MusicSurface
 import org.singularux.music.core.ui.MusicTheme
 import org.singularux.music.feature.home.R
 
@@ -39,11 +39,8 @@ data class SectionCollectionComponentData(
     val numberOfPlaylists: Int
 )
 
-sealed class SectionCollectionComponentAction {
-    data object Artists : SectionCollectionComponentAction()
-    data object Albums : SectionCollectionComponentAction()
-    data object Playlists : SectionCollectionComponentAction()
-    data object Recent : SectionCollectionComponentAction()
+enum class SectionCollectionComponentAction {
+    ARTISTS, ALBUMS, PLAYLISTS, RECENT
 }
 
 @Composable
@@ -54,7 +51,8 @@ fun SectionCollectionComponent(
 ) {
     Column(
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .background(color = MaterialTheme.colorScheme.surface),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
@@ -75,7 +73,7 @@ fun SectionCollectionComponent(
                     stringResource(R.string.section_collection_empty)
                 },
                 icon = Icons.Rounded.Person,
-                onClick = { onClick(SectionCollectionComponentAction.Artists) }
+                onClick = { onClick(SectionCollectionComponentAction.ARTISTS) }
             )
             SectionCollectionComponentCard(
                 title = stringResource(R.string.section_collection_albums),
@@ -85,7 +83,7 @@ fun SectionCollectionComponent(
                     stringResource(R.string.section_collection_empty)
                 },
                 icon = Icons.Rounded.Album,
-                onClick = { onClick(SectionCollectionComponentAction.Albums) }
+                onClick = { onClick(SectionCollectionComponentAction.ALBUMS) }
             )
         }
         Row(
@@ -101,13 +99,13 @@ fun SectionCollectionComponent(
                     stringResource(R.string.section_collection_empty)
                 },
                 icon = Icons.Rounded.LibraryMusic,
-                onClick = { onClick(SectionCollectionComponentAction.Playlists) }
+                onClick = { onClick(SectionCollectionComponentAction.PLAYLISTS) }
             )
             SectionCollectionComponentCard(
                 title = stringResource(R.string.section_collection_recent),
                 subtitle = null,
                 icon = Icons.Rounded.History,
-                onClick = { onClick(SectionCollectionComponentAction.Recent) }
+                onClick = { onClick(SectionCollectionComponentAction.RECENT) }
             )
         }
     }
@@ -164,15 +162,13 @@ fun RowScope.SectionCollectionComponentCard(
 @Composable
 private fun Preview() {
     MusicTheme {
-        MusicSurface {
-            SectionCollectionComponent(
-                data = SectionCollectionComponentData(
-                    numberOfArtists = 10,
-                    numberOfAlbums = 12,
-                    numberOfPlaylists = 2
-                ),
-                onClick = {}
-            )
-        }
+        SectionCollectionComponent(
+            data = SectionCollectionComponentData(
+                numberOfArtists = 10,
+                numberOfAlbums = 12,
+                numberOfPlaylists = 2
+            ),
+            onClick = {}
+        )
     }
 }

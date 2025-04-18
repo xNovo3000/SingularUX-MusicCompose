@@ -56,6 +56,8 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.navigation)
+    // Coil
+    implementation(libs.coil.compose)
     // Compose
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.animation)
