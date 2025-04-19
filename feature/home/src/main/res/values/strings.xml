@@ -19,4 +19,6 @@
     <string name="track_item_supporting">%1$d:%2$d &#183; %3$s</string>
     <string name="track_item_more_vert">More</string>
     <string name="track_item_add_to_queue">Add to queue</string>
+    <string name="track_item_show_artist">Show artist</string>
+    <string name="track_item_show_album">Show album</string>
 </resources>
