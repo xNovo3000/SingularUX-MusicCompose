@@ -1,6 +1,7 @@
 package org.singularux.music.feature.home.ui
 
 import android.content.res.Configuration
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,10 +17,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import org.singularux.music.core.ui.MusicSurface
 import org.singularux.music.core.ui.MusicTheme
 import org.singularux.music.feature.home.R
-import org.singularux.music.feature.home.model.TrackSortingStrategy
+
+enum class TrackSortingStrategy(@StringRes val displayNameRes: Int) {
+    AZ(R.string.sorting_strategy_az),
+    DECREASING_DURATION(R.string.sorting_strategy_decreasing_duration)
+}
 
 data class SectionTracksHeaderComponentData(
     val sortingStrategy: TrackSortingStrategy
@@ -44,7 +48,8 @@ fun SectionTracksHeaderComponent(
     ) {
         Text(
             text = stringResource(R.string.section_tracks_header),
-            style = MaterialTheme.typography.titleSmall
+            style = MaterialTheme.typography.titleSmall,
+            color = MaterialTheme.colorScheme.onSurface
         )
         Spacer(modifier = Modifier.weight(1F))
         AssistChip(
@@ -72,13 +77,11 @@ fun SectionTracksHeaderComponent(
 @Composable
 private fun Preview() {
     MusicTheme {
-        MusicSurface {
-            SectionTracksHeaderComponent(
-                data = SectionTracksHeaderComponentData(
-                    sortingStrategy = TrackSortingStrategy.AZ
-                ),
-                onClick = {}
-            )
-        }
+        SectionTracksHeaderComponent(
+            data = SectionTracksHeaderComponentData(
+                sortingStrategy = TrackSortingStrategy.AZ
+            ),
+            onClick = {}
+        )
     }
 }

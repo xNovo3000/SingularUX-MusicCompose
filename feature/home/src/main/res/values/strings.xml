@@ -21,4 +21,9 @@
     <string name="track_item_add_to_queue">Add to queue</string>
     <string name="track_item_show_artist">Show artist</string>
     <string name="track_item_show_album">Show album</string>
+    <string name="album_item_support">%1$d:%2$d &#183; %d tracks</string>
+    <string name="search_view_header_tracks">Tracks</string>
+    <string name="search_view_header_albums">Albums</string>
+    <string name="search_view_header_artists">Artists</string>
+    <string name="search_view_header_playlists">Playlists</string>
 </resources>

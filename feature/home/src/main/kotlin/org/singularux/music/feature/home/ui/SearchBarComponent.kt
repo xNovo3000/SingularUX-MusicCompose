@@ -2,6 +2,7 @@ package org.singularux.music.feature.home.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -37,7 +38,8 @@ fun SearchBarComponent(
     onQueryChange: (String) -> Unit,
     onSearch: (String) -> Unit,
     expanded: Boolean,
-    onExpandedChange: (Boolean) -> Unit
+    onExpandedChange: (Boolean) -> Unit,
+    content: @Composable ColumnScope.() -> Unit
 ) {
     SearchBar(
         modifier = modifier,
@@ -83,10 +85,9 @@ fun SearchBarComponent(
             )
         },
         expanded = expanded,
-        onExpandedChange = onExpandedChange
-    ) {
-        // TODO: Add content
-    }
+        onExpandedChange = onExpandedChange,
+        content = content
+    )
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
@@ -112,7 +113,7 @@ private fun Preview() {
                     onSearch = {},
                     expanded = expanded,
                     onExpandedChange = { expanded = it }
-                )
+                ) {}
             }
         }
     }

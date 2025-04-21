@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.traversalIndex
 
 @ExperimentalMaterial3Api
 @Composable
@@ -16,6 +18,6 @@ fun HomeRoute(modifier: Modifier = Modifier) {
             .fillMaxSize()
             .semantics { isTraversalGroup = true }
     ) {
-
+        
     }
 }
