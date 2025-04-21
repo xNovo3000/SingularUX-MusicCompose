@@ -1,6 +1,7 @@
 package org.singularux.music.feature.home.ui
 
 import android.content.res.Configuration
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.MusicNote
@@ -33,10 +34,12 @@ data class AlbumItemData(
 @Composable
 fun AlbumItem(
     modifier: Modifier = Modifier,
-    data: AlbumItemData
+    data: AlbumItemData,
+    onClick: () -> Unit
 ) {
     ListItem(
-        modifier = modifier,
+        modifier = modifier
+            .clickable(onClick = onClick),
         headlineContent = { Text(text = data.name) },
         supportingContent = {
             Text(
@@ -77,7 +80,8 @@ private fun Preview() {
                 albumArtUri = null,
                 numberOfTracks = 10,
                 duration = 697.seconds
-            )
+            ),
+            onClick = {}
         )
     }
 }
