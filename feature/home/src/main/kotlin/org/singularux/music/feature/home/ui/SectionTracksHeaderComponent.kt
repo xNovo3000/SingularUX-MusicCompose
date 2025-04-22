@@ -19,11 +19,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.singularux.music.core.ui.MusicTheme
 import org.singularux.music.feature.home.R
-
-enum class TrackSortingStrategy(@StringRes val displayNameRes: Int) {
-    AZ(R.string.sorting_strategy_az),
-    DECREASING_DURATION(R.string.sorting_strategy_decreasing_duration)
-}
+import org.singularux.music.feature.home.model.TrackSortingStrategy
 
 data class SectionTracksHeaderComponentData(
     val sortingStrategy: TrackSortingStrategy

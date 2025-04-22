@@ -4,16 +4,16 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class GetSearchSuggestionsUseCase @Inject constructor() {
+class ListenSearchSuggestionsUseCase @Inject constructor() {
 
     companion object {
         private const val TAG = "GetSearchSuggestionsUseCase"
     }
 
-    // TODO: Implement
     operator fun invoke(): Flow<List<String>> {
+        // TODO: Implement
         return flow {
-            emit(value = List(6) { "Suggestion $it" })
+            List(5) { "Suggestion $it" }
         }
     }
 

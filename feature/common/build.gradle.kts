@@ -1,14 +1,12 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.compose)
 }
 
 android {
 
-    namespace = "org.singularux.music.feature.home"
+    namespace = "org.singularux.music.feature.common"
     compileSdk = 36
     buildToolsVersion = "36.0.0"
 
@@ -45,10 +43,8 @@ android {
 dependencies {
     // Library
     api(project(":core:ui"))
-    api(project(":feature:common"))
     // AndroidX
     implementation(libs.androidx.core)
-    implementation(libs.androidx.lifecycle.viewmodel)
     // Coil
     implementation(libs.coil.compose)
     // Compose
@@ -63,9 +59,6 @@ dependencies {
     // Compose - Material 3
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons)
-    // Hilt
-    implementation(libs.hilt.android)
-    ksp(libs.hilt.android.compiler)
     // JDK Desugaring
     coreLibraryDesugaring(libs.jdk.desugar)
 }

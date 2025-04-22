@@ -1,4 +1,4 @@
-package org.singularux.music.feature.home.ui
+package org.singularux.music.feature.common.ui
 
 import android.content.res.Configuration
 import androidx.compose.foundation.clickable
@@ -19,50 +19,37 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
 import org.singularux.music.core.ui.MusicTheme
-import org.singularux.music.feature.home.R
-import kotlin.time.Duration
+import org.singularux.music.feature.common.R
+import org.singularux.music.feature.common.model.Album
 import kotlin.time.Duration.Companion.seconds
-
-data class AlbumItemData(
-    val id: Int,
-    val name: String,
-    val albumArtUri: String?,
-    val numberOfTracks: Int,
-    val duration: Duration
-)
 
 @Composable
 fun AlbumItem(
     modifier: Modifier = Modifier,
-    data: AlbumItemData,
+    album: Album,
     onClick: () -> Unit
 ) {
     ListItem(
         modifier = modifier
             .clickable(onClick = onClick),
-        headlineContent = { Text(text = data.name) },
+        headlineContent = {
+            Text(text = album.title)
+        },
         supportingContent = {
-            Text(
-                text = stringResource(
-                    R.string.album_item_support,
-                    data.duration.inWholeMinutes,
-                    data.duration.inWholeSeconds % 60,
-                    data.numberOfTracks
-                )
-            )
+            Text(text = stringResource(R.string.album_item_supporting, album.numberOfTracks))
         },
         leadingContent = {
             val albumArtPlaceholder = rememberVectorPainter(Icons.Rounded.MusicNote)  // TODO: Better placeholder
             AsyncImage(
                 modifier = Modifier.size(56.dp),
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data(data.albumArtUri)
+                    .data(album.albumArtUri)
                     .crossfade(durationMillis = 300)
                     .size(size = with(LocalDensity.current) { 56.dp.toPx().toInt() })
                     .build(),
                 placeholder = albumArtPlaceholder,
                 error = albumArtPlaceholder,
-                contentDescription = data.name
+                contentDescription = album.title
             )
         }
     )
@@ -74,9 +61,9 @@ fun AlbumItem(
 private fun Preview() {
     MusicTheme {
         AlbumItem(
-            data = AlbumItemData(
+            album = Album(
                 id = 1,
-                name = "My Album",
+                title = "My Album",
                 albumArtUri = null,
                 numberOfTracks = 10,
                 duration = 697.seconds

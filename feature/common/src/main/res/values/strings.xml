@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="artist_item_supporting">Artist</string>
+    <string name="album_item_supporting">Album &#183; %1$d tracks</string>
+    <string name="playlist_item_supporting">Playlist &#183; %1$d tracks</string>
+    <string name="track_item_supporting">%1$d:%2$d &#183; %3$s</string>
+    <string name="track_item_more_vert">More</string>
+    <string name="track_item_add_to_queue">Add to queue</string>
+    <string name="track_item_show_artist">Show artist</string>
+    <string name="track_item_show_album">Show album</string>
+</resources>

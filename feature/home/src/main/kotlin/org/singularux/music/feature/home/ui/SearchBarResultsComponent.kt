@@ -25,18 +25,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.singularux.music.core.ui.MusicTheme
 import org.singularux.music.feature.home.R
+import org.singularux.music.feature.common.model.Album
+import org.singularux.music.feature.home.model.SearchResults
+import org.singularux.music.feature.common.model.Track
+import org.singularux.music.feature.common.ui.AlbumItem
+import org.singularux.music.feature.common.ui.AlbumItemData
+import org.singularux.music.feature.common.ui.TrackItem
+import org.singularux.music.feature.common.ui.TrackItemAction
 import kotlin.time.Duration.Companion.seconds
 
-data class SearchBarResultsComponentData(
-    val tracks: List<TrackItemData>,
-    val albums: List<AlbumItemData>,
-    val hasMoreTracks: Boolean,
-    val hasMoreAlbums: Boolean
-    // TODO: Add artists, playlists, etc...
-)
-
 sealed class SearchBarResultsComponentAction {
-    data class Track(val data: TrackItemData, val action: TrackItemAction) : SearchBarResultsComponentAction()
+    data class Track(val data: Track, val action: TrackItemAction) : SearchBarResultsComponentAction()
     data class Album(val data: AlbumItemData) : SearchBarResultsComponentAction()
     data class Artist(val id: Int) : SearchBarResultsComponentAction()
     data class Playlist(val id: Int) : SearchBarResultsComponentAction()
@@ -49,7 +48,7 @@ sealed class SearchBarResultsComponentAction {
 @Composable
 fun SearchBarResultsComponent(
     modifier: Modifier = Modifier,
-    data: SearchBarResultsComponentData,
+    data: SearchResults.Some,
     onAction: (SearchBarResultsComponentAction) -> Unit,
     onScroll: () -> Unit
 ) {
@@ -81,7 +80,7 @@ fun SearchBarResultsComponent(
             TrackItem(
                 modifier = Modifier
                     .background(color = MaterialTheme.colorScheme.surfaceContainerHigh),
-                data = trackItemData,
+                track = trackItemData,
                 onAction = {
                     onAction(SearchBarResultsComponentAction.Track(trackItemData, it))
                 }
@@ -161,9 +160,9 @@ private val AlbumItemData.key: String
 private fun Preview() {
     MusicTheme {
         SearchBarResultsComponent(
-            data = SearchBarResultsComponentData(
+            data = SearchResults.Some(
                 tracks = List(3) {
-                    TrackItemData(
+                    Track(
                         id = it,
                         title = "Test",
                         artistName = "Test artist",
@@ -175,9 +174,9 @@ private fun Preview() {
                     )
                 },
                 albums = List(3) {
-                    AlbumItemData(
+                    Album(
                         id = it,
-                        name = "My Album",
+                        title = "My Album",
                         albumArtUri = null,
                         numberOfTracks = 10,
                         duration = 697.seconds
