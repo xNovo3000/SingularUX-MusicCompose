@@ -29,20 +29,12 @@ import org.singularux.music.feature.common.model.Album
 import org.singularux.music.feature.home.model.SearchResults
 import org.singularux.music.feature.common.model.Track
 import org.singularux.music.feature.common.ui.AlbumItem
-import org.singularux.music.feature.common.ui.AlbumItemData
 import org.singularux.music.feature.common.ui.TrackItem
 import org.singularux.music.feature.common.ui.TrackItemAction
 import kotlin.time.Duration.Companion.seconds
 
 sealed class SearchBarResultsComponentAction {
-    data class Track(val data: Track, val action: TrackItemAction) : SearchBarResultsComponentAction()
-    data class Album(val data: AlbumItemData) : SearchBarResultsComponentAction()
-    data class Artist(val id: Int) : SearchBarResultsComponentAction()
-    data class Playlist(val id: Int) : SearchBarResultsComponentAction()
-    data object AllTracks : SearchBarResultsComponentAction()
-    data object AllAlbums : SearchBarResultsComponentAction()
-    data object AllArtists : SearchBarResultsComponentAction()
-    data object AllPlaylists : SearchBarResultsComponentAction()
+
 }
 
 @Composable
@@ -68,7 +60,7 @@ fun SearchBarResultsComponent(
                 text = stringResource(R.string.search_view_header_tracks),
                 showSeeMoreButton = data.hasMoreTracks,
                 onSeeMoreButtonClick = {
-                    onAction(SearchBarResultsComponentAction.AllTracks)
+                    // onAction(SearchBarResultsComponentAction.AllTracks)
                 }
             )
         }
@@ -82,7 +74,7 @@ fun SearchBarResultsComponent(
                     .background(color = MaterialTheme.colorScheme.surfaceContainerHigh),
                 track = trackItemData,
                 onAction = {
-                    onAction(SearchBarResultsComponentAction.Track(trackItemData, it))
+                    // onAction(SearchBarResultsComponentAction.Track(trackItemData, it))
                 }
             )
         }
@@ -94,7 +86,7 @@ fun SearchBarResultsComponent(
                 text = stringResource(R.string.search_view_header_albums),
                 showSeeMoreButton = data.hasMoreAlbums,
                 onSeeMoreButtonClick = {
-                    onAction(SearchBarResultsComponentAction.AllAlbums)
+                    // onAction(SearchBarResultsComponentAction.AllAlbums)
                 }
             )
         }
@@ -102,13 +94,13 @@ fun SearchBarResultsComponent(
             items = data.albums,
             key = { it.key },
             contentType = { it }
-        ) { albumItemData ->
+        ) { album ->
             AlbumItem(
                 modifier = Modifier
                     .background(color = MaterialTheme.colorScheme.surfaceContainerHigh),
-                data = albumItemData,
+                album = album,
                 onClick = {
-                    onAction(SearchBarResultsComponentAction.Album(albumItemData))
+                    // onAction(SearchBarResultsComponentAction.Album(Album))
                 }
             )
         }
@@ -148,10 +140,10 @@ fun SearchBarResultsHeaderComponent(
     }
 }
 
-private val TrackItemData.key: String
+private val Track.key: String
     get() = "Track${id}"
 
-private val AlbumItemData.key: String
+private val Album.key: String
     get() = "Album${id}"
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_NO)
@@ -178,8 +170,7 @@ private fun Preview() {
                         id = it,
                         title = "My Album",
                         albumArtUri = null,
-                        numberOfTracks = 10,
-                        duration = 697.seconds
+                        numberOfTracks = 10
                     )
                 },
                 hasMoreTracks = false,

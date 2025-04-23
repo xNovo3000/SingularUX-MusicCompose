@@ -65,8 +65,7 @@ private fun Preview() {
                 id = 1,
                 title = "My Album",
                 albumArtUri = null,
-                numberOfTracks = 10,
-                duration = 697.seconds
+                numberOfTracks = 10
             ),
             onClick = {}
         )

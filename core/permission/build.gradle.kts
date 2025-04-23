@@ -1,12 +1,13 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose)
+    alias(libs.plugins.kotlin.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
 
-    namespace = "org.singularux.music.core.ui"
+    namespace = "org.singularux.music.core.permission"
     compileSdk = 36
     buildToolsVersion = "36.0.0"
 
@@ -24,10 +25,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-
     compileOptions {
         isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_11
@@ -43,15 +40,9 @@ android {
 dependencies {
     // AndroidX
     implementation(libs.androidx.core)
-    implementation(libs.androidx.core.splashscreen)
-    // Compose
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.animation)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.runtime)
-    implementation(libs.androidx.compose.ui)
-    // Compose - Material 3
-    implementation(libs.androidx.compose.material3)
+    // Hilt
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
     // JDK Desugaring
     coreLibraryDesugaring(libs.jdk.desugar)
 }

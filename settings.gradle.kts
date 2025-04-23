@@ -24,6 +24,7 @@ dependencyResolutionManagement {
 rootProject.name = "MusicCompose"
 
 include(":app")
+include(":core:permission")
 include(":core:ui")
 include(":feature:common")
 include(":feature:home")
