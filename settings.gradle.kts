@@ -26,5 +26,6 @@ rootProject.name = "MusicCompose"
 include(":app")
 include(":core:permission")
 include(":core:ui")
+include(":data:library")
 include(":feature:common")
 include(":feature:home")
