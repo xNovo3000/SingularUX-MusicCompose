@@ -19,6 +19,7 @@ class AlbumRepositoryAndroid @Inject constructor(
     companion object {
 
         private const val TAG = "AlbumRepositoryAndroid"
+        val URI = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
 
         private val GET_ALL_URI = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
         private val GET_ALL_PROJECTION = arrayOf(

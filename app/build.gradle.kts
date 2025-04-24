@@ -50,7 +50,9 @@ android {
 
 dependencies {
     // Library
+    api(project(":core:permission"))
     api(project(":core:ui"))
+    api(project(":data:library"))
     // AndroidX
     implementation(libs.androidx.core)
     implementation(libs.androidx.core.splashscreen)

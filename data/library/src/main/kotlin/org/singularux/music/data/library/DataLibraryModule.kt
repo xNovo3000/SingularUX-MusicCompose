@@ -8,6 +8,10 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ActivityRetainedScoped
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import org.singularux.music.data.library.observer.MediaStoreProcessor
 import org.singularux.music.data.library.repository.PlaylistRepository
 
 @Module
@@ -34,6 +38,14 @@ object DataLibraryModule {
         mediaStoreIntegrationDatabase: MediaStoreIntegrationDatabase
     ): PlaylistRepository {
         return mediaStoreIntegrationDatabase.getPlaylistRepository()
+    }
+
+    @Provides
+    @ActivityRetainedScoped
+    fun providesMediaStoreProcessor(): MediaStoreProcessor {
+        return MediaStoreProcessor(
+            coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        )
     }
 
 }
