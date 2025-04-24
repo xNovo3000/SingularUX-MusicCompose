@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt)
 }
@@ -42,9 +43,12 @@ dependencies {
     api(project(":core:permission"))
     // AndroidX
     implementation(libs.androidx.core)
+    implementation(libs.androidx.datastore)
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    // Kotlin
+    implementation(libs.kotlinx.serialization.json)
     // JDK Desugaring
     coreLibraryDesugaring(libs.jdk.desugar)
 }

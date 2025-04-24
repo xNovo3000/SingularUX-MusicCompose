@@ -26,7 +26,7 @@ object DataLibraryModule {
             .databaseBuilder(
                 context = context,
                 klass = MediaStoreIntegrationDatabase::class.java,
-                name = "media-store-integration"
+                name = "media_store_integration.sql"
             )
             .build()
     }
