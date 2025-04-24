@@ -1,6 +1,7 @@
 package org.singularux.music.data.library.repository
 
 import android.content.Context
+import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -19,7 +20,7 @@ class ArtistRepositoryAndroid @Inject constructor(
     companion object {
 
         private const val TAG = "ArtistRepositoryAndroid"
-        val URI = MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI
+        val URI: Uri = MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI
 
         private val GET_ALL_URI = MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI
         private val GET_ALL_PROJECTION = arrayOf(

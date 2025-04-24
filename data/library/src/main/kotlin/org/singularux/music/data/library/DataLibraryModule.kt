@@ -39,4 +39,12 @@ object DataLibraryModule {
         return mediaStoreIntegrationDatabase.getPlaylistRepository()
     }
 
+    @Provides
+    @ActivityRetainedScoped
+    fun providesMediaStoreProcessor(): MediaStoreProcessor {
+        return MediaStoreProcessor(
+            coroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
+        )
+    }
+
 }

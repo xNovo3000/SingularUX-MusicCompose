@@ -12,7 +12,7 @@ android {
     buildToolsVersion = "36.0.0"
 
     defaultConfig {
-        minSdk = 29
+        minSdk = 26
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
         }

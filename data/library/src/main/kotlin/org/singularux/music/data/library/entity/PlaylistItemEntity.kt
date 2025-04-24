@@ -26,10 +26,11 @@ import kotlin.time.Duration
 data class PlaylistItemEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val playlistId: Int,
-    val trackUri: String,
-    val cachedTrackTitle: String,
-    val cachedTrackAlbumId: String?,
-    val cachedTrackArtistId: Int?,
-    val cachedTrackArtistName: String?,
-    val cachedTrackDuration: Duration
+    val uri: String,
+    val cachedTitle: String,
+    val cachedAlbumId: String?,
+    val cachedArtworkUri: String?,
+    val cachedArtistId: Int?,
+    val cachedArtistName: String?,
+    val cachedDuration: Duration
 )

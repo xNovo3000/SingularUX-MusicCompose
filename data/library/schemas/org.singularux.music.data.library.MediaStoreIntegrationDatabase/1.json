@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dd36ea8cd9b5ef70f094a0cccf8f9492",
+    "identityHash": "1f779d94d9dc91787cc002b38963acdb",
     "entities": [
       {
         "tableName": "Playlist",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `creationDate` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `creationDate` INTEGER NOT NULL, `cachedArtworkUri` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -25,6 +25,11 @@
             "columnName": "creationDate",
             "affinity": "INTEGER",
             "notNull": true
+          },
+          {
+            "fieldPath": "cachedArtworkUri",
+            "columnName": "cachedArtworkUri",
+            "affinity": "TEXT"
           }
         ],
         "primaryKey": {
@@ -36,7 +41,7 @@
       },
       {
         "tableName": "PlayListItem",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `playlistId` INTEGER NOT NULL, `trackUri` TEXT NOT NULL, `cachedTrackTitle` TEXT NOT NULL, `cachedTrackAlbumId` TEXT, `cachedTrackArtistId` INTEGER, `cachedTrackArtistName` TEXT, `cachedTrackDuration` INTEGER NOT NULL, FOREIGN KEY(`playlistId`) REFERENCES `Playlist`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `playlistId` INTEGER NOT NULL, `uri` TEXT NOT NULL, `cachedTitle` TEXT NOT NULL, `cachedAlbumId` TEXT, `cachedArtworkUri` TEXT, `cachedArtistId` INTEGER, `cachedArtistName` TEXT, `cachedDuration` INTEGER NOT NULL, FOREIGN KEY(`playlistId`) REFERENCES `Playlist`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -51,35 +56,40 @@
             "notNull": true
           },
           {
-            "fieldPath": "trackUri",
-            "columnName": "trackUri",
+            "fieldPath": "uri",
+            "columnName": "uri",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "cachedTrackTitle",
-            "columnName": "cachedTrackTitle",
+            "fieldPath": "cachedTitle",
+            "columnName": "cachedTitle",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "cachedTrackAlbumId",
-            "columnName": "cachedTrackAlbumId",
+            "fieldPath": "cachedAlbumId",
+            "columnName": "cachedAlbumId",
             "affinity": "TEXT"
           },
           {
-            "fieldPath": "cachedTrackArtistId",
-            "columnName": "cachedTrackArtistId",
+            "fieldPath": "cachedArtworkUri",
+            "columnName": "cachedArtworkUri",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "cachedArtistId",
+            "columnName": "cachedArtistId",
             "affinity": "INTEGER"
           },
           {
-            "fieldPath": "cachedTrackArtistName",
-            "columnName": "cachedTrackArtistName",
+            "fieldPath": "cachedArtistName",
+            "columnName": "cachedArtistName",
             "affinity": "TEXT"
           },
           {
-            "fieldPath": "cachedTrackDuration",
-            "columnName": "cachedTrackDuration",
+            "fieldPath": "cachedDuration",
+            "columnName": "cachedDuration",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -124,7 +134,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dd36ea8cd9b5ef70f094a0cccf8f9492')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1f779d94d9dc91787cc002b38963acdb')"
     ]
   }
 }

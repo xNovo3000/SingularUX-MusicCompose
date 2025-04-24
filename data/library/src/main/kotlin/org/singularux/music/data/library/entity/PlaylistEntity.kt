@@ -8,5 +8,6 @@ import kotlinx.datetime.Instant
 data class PlaylistEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val title: String,
-    val creationDate: Instant
+    val creationDate: Instant,
+    val cachedArtworkUri: String?
 )
