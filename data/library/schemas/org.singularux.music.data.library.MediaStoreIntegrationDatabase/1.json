@@ -1,0 +1,130 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "dd36ea8cd9b5ef70f094a0cccf8f9492",
+    "entities": [
+      {
+        "tableName": "Playlist",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `creationDate` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creationDate",
+            "columnName": "creationDate",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "PlayListItem",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `playlistId` INTEGER NOT NULL, `trackUri` TEXT NOT NULL, `cachedTrackTitle` TEXT NOT NULL, `cachedTrackAlbumId` TEXT, `cachedTrackArtistId` INTEGER, `cachedTrackArtistName` TEXT, `cachedTrackDuration` INTEGER NOT NULL, FOREIGN KEY(`playlistId`) REFERENCES `Playlist`(`id`) ON UPDATE CASCADE ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playlistId",
+            "columnName": "playlistId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "trackUri",
+            "columnName": "trackUri",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cachedTrackTitle",
+            "columnName": "cachedTrackTitle",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cachedTrackAlbumId",
+            "columnName": "cachedTrackAlbumId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "cachedTrackArtistId",
+            "columnName": "cachedTrackArtistId",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "cachedTrackArtistName",
+            "columnName": "cachedTrackArtistName",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "cachedTrackDuration",
+            "columnName": "cachedTrackDuration",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_PlayListItem_playlistId",
+            "unique": false,
+            "columnNames": [
+              "playlistId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_PlayListItem_playlistId` ON `${TABLE_NAME}` (`playlistId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Playlist",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "playlistId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [
+      {
+        "viewName": "PlaylistView",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT p.id, p.title, p.creationDate, COUNT(*) AS numberOfItems FROM Playlist p INNER JOIN PlayListItem i ON p.id = i.playlistId GROUP BY p.id"
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dd36ea8cd9b5ef70f094a0cccf8f9492')"
+    ]
+  }
+}

@@ -25,7 +25,8 @@ class TrackRepositoryAndroid @Inject constructor(
 
         private val GET_ALL_URI = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
         private val GET_ALL_PROJECTION = arrayOf(
-            MediaStore.Audio.Media._ID, MediaStore.Audio.Media.TITLE,
+            MediaStore.Audio.Media._ID,
+            MediaStore.Audio.Media.DISPLAY_NAME, MediaStore.Audio.Media.TITLE,
             MediaStore.Audio.Media.ALBUM_ID, MediaStore.Audio.Media.ARTIST_ID,
             MediaStore.Audio.Media.ARTIST, MediaStore.Audio.Media.DURATION
         )
@@ -57,11 +58,11 @@ class TrackRepositoryAndroid @Inject constructor(
                         result.add(
                             element = TrackEntity(
                                 id = cursor.getInt(0),
-                                title = cursor.getString(1),
-                                albumId = cursor.getIntOrNull(2),
-                                artistId = cursor.getIntOrNull(3),
-                                artistName = cursor.getStringOrNull(4),
-                                duration = cursor.getInt(5).milliseconds
+                                title = cursor.getStringOrNull(2) ?: cursor.getString(1),
+                                albumId = cursor.getIntOrNull(3),
+                                artistId = cursor.getIntOrNull(4),
+                                artistName = cursor.getStringOrNull(5),
+                                duration = cursor.getInt(6).milliseconds
                             )
                         )
                     }

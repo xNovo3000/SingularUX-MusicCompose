@@ -13,6 +13,9 @@ android {
 
     defaultConfig {
         minSdk = 29
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     buildTypes {
@@ -42,9 +45,13 @@ dependencies {
     api(project(":core:permission"))
     // AndroidX
     implementation(libs.androidx.core)
+    implementation(libs.androidx.room)
+    ksp(libs.androidx.room.compiler)
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    // Kotlin
+    implementation(libs.kotlinx.datetime)
     // JDK Desugaring
     coreLibraryDesugaring(libs.jdk.desugar)
 }
