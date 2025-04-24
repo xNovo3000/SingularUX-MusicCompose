@@ -8,6 +8,7 @@ androidx-core-splashscreen = "1.0.1"
 androidx-activity = "1.10.1"
 androidx-datastore = "1.1.5"
 androidx-lifecycle = "2.8.7"
+androidx-media3 = "1.6.1"
 androidx-navigation = "2.8.9"
 androidx-room = "2.7.1"
 androidx-compose = "2025.04.01"
@@ -23,6 +24,9 @@ androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscree
 androidx-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity" }
 androidx-datastore = { group = "androidx.datastore", name = "datastore", version.ref = "androidx-datastore" }
 androidx-lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle" }
+androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "androidx-media3" }
+androidx-media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "androidx-media3" }
+androidx-media3-ui = { group = "androidx.media3", name = "media3-ui-compose", version.ref = "androidx-media3" }
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
 androidx-room = { group = "androidx.room", name = "room-ktx", version.ref = "androidx-room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidx-room" }
