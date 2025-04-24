@@ -2,6 +2,7 @@ package org.singularux.music.feature.playback.foreground
 
 import android.content.ComponentName
 import android.content.Context
+import android.util.Log
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionToken
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -34,9 +35,14 @@ class MusicControllerFacade @Inject constructor(
         coroutineScope.launch {
             val componentName = ComponentName(context, MusicPlaybackService::class.java)
             val sessionToken = SessionToken(context, componentName)
-            val mediaController = MediaController.Builder(context, sessionToken)
-                .buildAsync()
-                .await()
+            val mediaController = try {
+                MediaController.Builder(context, sessionToken)
+                    .buildAsync()
+                    .await()
+            } catch (e: Exception) {
+                Log.e(TAG, "Cannot initialize MediaController instance", e)
+                null
+            }
             mutableMediaController.update { mediaController }
         }
     }
