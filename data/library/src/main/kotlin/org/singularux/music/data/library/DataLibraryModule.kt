@@ -11,7 +11,6 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import org.singularux.music.data.library.observer.MediaStoreProcessor
 import org.singularux.music.data.library.repository.PlaylistRepository
 
 @Module

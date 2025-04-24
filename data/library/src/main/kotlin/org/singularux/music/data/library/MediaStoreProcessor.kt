@@ -1,4 +1,4 @@
-package org.singularux.music.data.library.observer
+package org.singularux.music.data.library
 
 import android.database.ContentObserver
 import android.net.Uri
@@ -7,6 +7,7 @@ import android.os.Looper
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import org.singularux.music.data.library.subscriber.MediaStoreUpdateSubscriber
 
 class MediaStoreProcessor(
     private val coroutineScope: CoroutineScope

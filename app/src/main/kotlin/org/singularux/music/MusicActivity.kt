@@ -9,7 +9,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 import org.singularux.music.core.permission.MusicPermission
 import org.singularux.music.core.permission.MusicPermissionManager
-import org.singularux.music.data.library.observer.MediaStoreProcessor
+import org.singularux.music.data.library.MediaStoreProcessor
 import org.singularux.music.data.library.repository.AlbumRepositoryAndroid
 import org.singularux.music.data.library.repository.ArtistRepositoryAndroid
 import org.singularux.music.data.library.repository.TrackRepositoryAndroid
