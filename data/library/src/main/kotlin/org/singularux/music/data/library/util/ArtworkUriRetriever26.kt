@@ -11,7 +11,7 @@ class ArtworkUriRetriever26 : ArtworkUriRetriever {
 
     companion object {
         private val ARTWORK_CACHE_26_URI = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
-        private val ARTWORK_CACHE_26_PROJECTION = arrayOf(
+        @Suppress("DEPRECATION") private val ARTWORK_CACHE_26_PROJECTION = arrayOf(
             MediaStore.Audio.Albums._ID, MediaStore.Audio.Albums.ALBUM_ART
         )
     }

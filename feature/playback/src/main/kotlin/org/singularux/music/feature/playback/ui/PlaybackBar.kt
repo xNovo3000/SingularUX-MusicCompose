@@ -22,6 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import org.singularux.music.core.ui.MusicTheme
 import org.singularux.music.feature.playback.foreground.MusicControllerFacade
 import org.singularux.music.feature.playback.viewmodel.PlaybackBarViewModel
@@ -73,7 +75,8 @@ private fun Preview() {
         PlaybackBar(
             viewModel = PlaybackBarViewModel(
                 musicControllerFacade = MusicControllerFacade(
-                    context = LocalContext.current
+                    context = LocalContext.current,
+                    coroutineScope = CoroutineScope(Dispatchers.Default)
                 )
             )
         )

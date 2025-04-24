@@ -25,7 +25,7 @@ class AlbumRepositoryAndroid @Inject constructor(
         val URI: Uri = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
 
         private val GET_ALL_URI = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
-        private val GET_ALL_PROJECTION = arrayOf(
+        @Suppress("DEPRECATION") private val GET_ALL_PROJECTION = arrayOf(
             MediaStore.Audio.Albums._ID, MediaStore.Audio.Albums.ALBUM,
             MediaStore.Audio.Albums.ALBUM_ART, MediaStore.Audio.Albums.NUMBER_OF_SONGS
         )
