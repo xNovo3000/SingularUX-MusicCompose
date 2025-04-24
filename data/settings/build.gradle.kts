@@ -39,8 +39,6 @@ android {
 }
 
 dependencies {
-    // Project
-    api(project(":core:permission"))
     // AndroidX
     implementation(libs.androidx.core)
     implementation(libs.androidx.datastore)

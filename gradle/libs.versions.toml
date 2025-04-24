@@ -13,6 +13,7 @@ androidx-navigation = "2.8.9"
 androidx-room = "2.7.1"
 androidx-compose = "2025.04.01"
 coil = "3.1.0"
+kotlinx-coroutines = "1.10.2"
 kotlinx-datetime = "0.6.2"
 kotlinx-serialization = "1.8.0"
 jdk-desugar = "2.1.5"
@@ -47,6 +48,7 @@ androidx-compose-material-icons = { group = "androidx.compose.material", name = 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 # Kotlin
+kotlinx-coroutines-guava = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-guava", version.ref = "kotlinx-coroutines" }
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 # JDK Desugar

@@ -68,6 +68,8 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    // Kotlin
+    implementation(libs.kotlinx.coroutines.guava)
     // JDK Desugaring
     coreLibraryDesugaring(libs.jdk.desugar)
 }

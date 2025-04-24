@@ -4,13 +4,18 @@ import android.database.ContentObserver
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import org.singularux.music.data.library.subscriber.MediaStoreUpdateSubscriber
+import javax.inject.Inject
 
-class MediaStoreProcessor(
-    private val coroutineScope: CoroutineScope
+@ActivityRetainedScoped
+class MediaStoreProcessor @Inject constructor(
+    private val coroutineScope: CoroutineScope = CoroutineScope(Dispatchers.Default + SupervisorJob())
 ) : ContentObserver(Handler(Looper.getMainLooper())) {
 
     private var currentUpdateJob: Job? = null
