@@ -25,6 +25,8 @@ import coil3.compose.AsyncImage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import org.singularux.music.core.ui.MusicTheme
+import org.singularux.music.feature.playback.domain.ListenPlaybackInfoUseCase
+import org.singularux.music.feature.playback.domain.ListenPlaybackProgressUseCase
 import org.singularux.music.feature.playback.foreground.MusicControllerFacade
 import org.singularux.music.feature.playback.viewmodel.PlaybackBarViewModel
 
@@ -37,12 +39,13 @@ fun PlaybackBar(
         modifier = modifier
             .background(MaterialTheme.colorScheme.surfaceContainer)
     ) {
+        val playbackProgress by viewModel.playbackProgress.collectAsState()
         LinearProgressIndicator(
             modifier = Modifier
                 .fillMaxWidth(),
-            progress = { 0.2F }
+            progress = { playbackProgress ?: 0.0F }
         )
-        val mediaController by viewModel.mediaController.collectAsState()
+        val playbackInfo by viewModel.playbackInfo.collectAsState()
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -71,12 +74,18 @@ fun PlaybackBar(
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Preview() {
+    val musicControllerFacade = MusicControllerFacade(
+        context = LocalContext.current,
+        coroutineScope = CoroutineScope(Dispatchers.Default)
+    )
     MusicTheme {
         PlaybackBar(
             viewModel = PlaybackBarViewModel(
-                musicControllerFacade = MusicControllerFacade(
-                    context = LocalContext.current,
-                    coroutineScope = CoroutineScope(Dispatchers.Default)
+                listenPlaybackInfoUseCase = ListenPlaybackInfoUseCase(
+                    musicControllerFacade = musicControllerFacade
+                ),
+                listenPlaybackProgressUseCase = ListenPlaybackProgressUseCase(
+                    musicControllerFacade = musicControllerFacade
                 )
             )
         )
